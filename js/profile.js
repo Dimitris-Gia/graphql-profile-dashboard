@@ -31,10 +31,17 @@ export async function getProfileData() {
                         object: {
                             type: { _eq: "project" }
                         }
+                        _and: [
+                            { path: { _nlike: "%/prompt-piscine/%" } }
+                            { path: { _nlike: "/ai-starter/%" } }
+                        ]
                     }
                 ) {
                     aggregate {
-                        count
+                        count(
+                            columns: objectId
+                            distinct: true
+                        )
                     }
                 }
 
@@ -43,9 +50,6 @@ export async function getProfileData() {
                         type: { _eq: "xp" }
                         invalidatedAt: { _is_null: true }
                         eventId: { _eq: 585 }
-                        object: {
-                            type: { _neq: "piscine" }
-                        }
                     }
                     order_by: {
                         createdAt: asc
