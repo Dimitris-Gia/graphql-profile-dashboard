@@ -14,7 +14,7 @@ export async function getProfileData() {
                     where: {
                         type: { _eq: "xp" }
                         invalidatedAt: { _is_null: true }
-                        path: { _nlike: "%piscine%" }
+                        eventId: { _eq: 585 }
                     }
                 ) {
                     aggregate {
@@ -42,7 +42,10 @@ export async function getProfileData() {
                     where: {
                         type: { _eq: "xp" }
                         invalidatedAt: { _is_null: true }
-                        path: { _nlike: "%piscine%" }
+                        eventId: { _eq: 585 }
+                        object: {
+                            type: { _neq: "piscine" }
+                        }
                     }
                     order_by: {
                         createdAt: asc
@@ -62,20 +65,25 @@ export async function getProfileData() {
     `;
 
     const data = await graphqlRequest(query);
-
     const user = data.user[0];
 
     return {
         username: user.login,
-        totalXP:
-            Number(user.transactions_aggregate.aggregate.sum.amount) +
-            70000 +
-            390000,
-        totalXPTransactions: user.transactions_aggregate.aggregate.count,
+
+        totalXP: Number(
+            user.transactions_aggregate.aggregate.sum.amount
+        ),
+
+        totalXPTransactions:
+            user.transactions_aggregate.aggregate.count,
+
         auditRatio: user.auditRatio,
         totalUp: user.totalUp,
         totalDown: user.totalDown,
-        totalProjects: user.progresses_aggregate.aggregate.count,
+
+        totalProjects:
+            user.progresses_aggregate.aggregate.count,
+
         xpHistory: user.transactions
     };
 }
