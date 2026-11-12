@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Zone01 student profile dashboard">
+
+    <title>Zone01 | My Profile</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- LOGIN SECTION -->
+    <main>
+
+        <section id="login-section">
+
+            <div class="login-container">
+
+                <h1>Zone01 Profile</h1>
+
+                <p>Sign in to view your student profile.</p>
+
+                <form id="login-form">
+
+                    <div class="form-group">
+                        <label for="identifier">
+                            Username or Email
+                        </label>
+
+                        <input
+                            type="text"
+                            id="identifier"
+                            name="identifier"
+                            placeholder="Enter your username or email"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <p id="login-error" role="alert" hidden></p>
+
+                    <button type="submit" id="login-button">
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE DASHBOARD -->
+        <section id="profile-section" hidden>
+
+            <header class="profile-header">
+
+                <h1>My Zone01 Profile</h1>
+
+                <button type="button" id="logout-button">
+                    Logout
+                </button>
+
+            </header>
+
+
+            <!-- USER INFORMATION -->
+            <section id="user-info">
+
+                <h2>User Information</h2>
+
+                <p id="username"></p>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section id="statistics">
+
+                <h2>Statistics</h2>
+
+                <div class="stats-container">
+
+                    <article class="stat-card">
+                        <h3>Total XP</h3>
+                        <p id="total-xp">Loading...</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Audit Ratio</h3>
+                        <p id="audit-ratio">Loading...</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Projects</h3>
+                        <p id="total-projects">Loading...</p>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- GRAPHS -->
+            <section id="charts">
+
+                <h2>My Statistics</h2>
+
+                <div class="chart-container">
+
+                    <article class="chart-card">
+                        <h3>XP Progress Over Time</h3>
+
+                        <svg
+                            id="xp-progress-chart"
+                            role="img"
+                            aria-label="XP progress over time"
+                            viewBox="0 0 600 300"
+                        >
+                        </svg>
+                    </article>
+
+
+                    <article class="chart-card">
+                        <h3>XP per Project</h3>
+
+                        <svg
+                            id="xp-project-chart"
+                            role="img"
+                            aria-label="XP earned per project"
+                            viewBox="0 0 600 300"
+                        >
+                        </svg>
+                    </article>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
