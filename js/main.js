@@ -48,8 +48,10 @@ async function loadProfile() {
     try {
         const profile = await getProfileData();
 
+        const fullName = profile.fullName || profile.username;
+
         document.querySelector("#username").textContent =
-            profile.username;
+            `${fullName} (${profile.username})`;
 
         document.querySelector("#total-xp").textContent =
             Number(profile.totalXP).toLocaleString("en-US");

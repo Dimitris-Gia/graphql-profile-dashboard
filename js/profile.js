@@ -9,6 +9,8 @@ export async function getProfileData() {
                 auditRatio
                 totalUp
                 totalDown
+                firstName
+                lastName
 
                 transactions_aggregate(
                     where: {
@@ -73,6 +75,10 @@ export async function getProfileData() {
 
     return {
         username: user.login,
+
+        fullName: [user.firstName, user.lastName]
+            .filter(Boolean)
+            .join(" "),
 
         totalXP: Number(
             user.transactions_aggregate.aggregate.sum.amount
