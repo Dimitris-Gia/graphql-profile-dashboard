@@ -46,6 +46,10 @@ GraphQL is used to retrieve user information, XP transactions, audit statistics,
 - Python 3 installed (for running a local development server).
 - A valid Zone01 account.
 
+### Usage using GitHub Url
+
+GitHub URL: https://dimitris-gia.github.io/graphql-profile-dashboard/
+
 ### Installation
 
 1. Clone the repository:
